@@ -37,13 +37,19 @@ search.addEventListener('keyup', function (event) {
 
     container.forEach(function (price) {
         var clothlist = price.querySelectorAll('p');
-        var match = Array.from(clothlist).some(function (p) {
-            return p.textContent.toUpperCase().includes(entervalue);
+        
+        var matchFound = false; 
+
+        clothlist.forEach(function (p) {
+            if (p.textContent.toUpperCase().includes(entervalue)) {
+                matchFound = true; 
+            }
         });
 
-        price.parentElement.style.display = match ? 'block' : 'none';
+        price.parentElement.style.display = matchFound ? 'block' : 'none';
     });
 });
+
 
 // collection - checkbox filter ========================================================
 
